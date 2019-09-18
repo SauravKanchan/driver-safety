@@ -26,19 +26,11 @@ def disconnect(sid):
 
 
 
-def print_cube(num):
-    """
-    function to print cube of given num
-    """
+def server():
     eventlet.wsgi.server(eventlet.listen(('', 5000)), app)
 
-    # print("Cube: {}".format(num * num * num))
 
-
-def print_square(num):
-    """
-    function to print square of given num
-    """
+def read_data():
     ser = serial.Serial()
     ser.port = '/dev/ttyUSB1'
     ser.open()
@@ -51,13 +43,11 @@ def print_square(num):
         else:
             print(data)
             data = ""
-    # print("Square: {}".format(num * num))
-
 
 if __name__ == "__main__":
     # creating thread
-    t1 = threading.Thread(target=print_square, args=(10,))
-    t2 = threading.Thread(target=print_cube, args=(10,))
+    t1 = threading.Thread(target=server)
+    t2 = threading.Thread(target=read_data)
 
     # starting thread 1
     t1.start()
