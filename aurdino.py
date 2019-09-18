@@ -2,11 +2,13 @@ import eventlet
 import socketio
 import threading
 import serial
+from flask import Flask, render_template
+
 
 sio = socketio.Server()
-app = socketio.WSGIApp(sio, static_files={
-    '/': {'content_type': 'text/html', 'filename': 'index.html'}
-})
+app = Flask(__name__)
+
+app = socketio.Middleware(sio, app)
 
 
 @sio.event
@@ -43,6 +45,7 @@ def read_data():
         else:
             print(data)
             data = ""
+            sio.emit("test",data)
 
 if __name__ == "__main__":
     # creating thread

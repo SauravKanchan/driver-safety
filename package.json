@@ -1,0 +1,23 @@
+{
+  "name": "driver-safety",
+  "version": "1.0.0",
+  "description": "## Installation ```console pip install -r requirements.txt python3 detect_blinks.py ``` ### Demo ![](output.gif)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SauravKanchan/driver-safety.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SauravKanchan/driver-safety/issues"
+  },
+  "homepage": "https://github.com/SauravKanchan/driver-safety#readme",
+  "dependencies": {
+    "serialport": "^7.1.5",
+    "socket.io-client": "^2.2.0"
+  }
+}
